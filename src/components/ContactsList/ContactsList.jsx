@@ -8,6 +8,8 @@ import {
   Contact,
   Button,
   Warning,
+  Name,
+  Number
 } from './ContactsList.styled';
 
 export const ContactsList = () => {
@@ -22,11 +24,11 @@ export const ContactsList = () => {
       <Title>Contacts 📃</Title>
       {visibleContacts.length ? (
         <List>
-          {visibleContacts.map(({ id, name, phone }) => {
+          {visibleContacts.map(({ id, name, number }) => {
             return (
               <Item key={id}>
                 <Contact>
-                  {name} {phone}
+                  <Name>{name}</Name><Number>{number}</Number> 
                 </Contact>
 
                 <Button

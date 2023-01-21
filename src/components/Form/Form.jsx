@@ -49,7 +49,7 @@ export const LoginForm = () => {
     }
     const contact = {
       name: values.name,
-      phone: values.number,
+      number: values.number,
       id: nanoid(),
     };    
     dispatch(addContact(contact));
