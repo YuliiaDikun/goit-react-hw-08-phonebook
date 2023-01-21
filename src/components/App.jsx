@@ -1,36 +1,66 @@
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyleComponent } from 'styles/GlobalStyles';
 import { theme } from 'styles/theme';
-
-import { fetchTasks } from 'redux/contacts/operations';
-import { getIsLoading, getError } from 'redux/contacts/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
 import { Container } from './Container/Container.styled';
-import { Title } from './Title/Title';
-import { LoginForm } from './Form/Form';
-import { ContactsList } from './ContactsList/ContactsList';
-import { InputSearch } from './InputSearch/InputSearch';
+
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'hooks/useAuth';
+
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const { isRefreshing } = useAuth();
+
   useEffect(() => {
-    dispatch(fetchTasks());
+    dispatch(refreshUser());
   }, [dispatch]);
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <ThemeProvider theme={theme}>
       <Container>
-        <Title />
-        <LoginForm />
-
-        <InputSearch />
-        {isLoading && !error && <b>Request in progress...</b>}
-        {!isLoading && <ContactsList />}
-        
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<RegisterPage />}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<LoginPage />}
+                />
+              }
+            />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<ContactsPage />}
+                />
+              }
+            />
+          </Route>
+        </Routes>
       </Container>
 
       <GlobalStyleComponent />
