@@ -2,8 +2,8 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyleComponent } from 'styles/GlobalStyles';
 import { theme } from 'styles/theme';
 
-import { fetchTasks } from 'redux/operations';
-import { getIsLoading, getError } from 'redux/selectors';
+import { fetchTasks } from 'redux/contacts/operations';
+import { getIsLoading, getError } from 'redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 

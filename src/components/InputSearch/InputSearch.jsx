@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { filterContacts } from 'redux/filterSlice';
+import { filterContacts } from 'redux/contacts/filterSlice';
 import { useDispatch } from 'react-redux';
 import { Input, Title } from './InputSearch.styled';
 export const InputSearch = () => {
