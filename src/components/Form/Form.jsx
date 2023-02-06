@@ -1,10 +1,10 @@
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
-import { Label, Input, Wrapper, ErrorMess, Button } from './Forms.styled';
+import {StyledForm, Label, Input, Wrapper, ErrorMess, Button } from './Forms.styled';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ export const LoginForm = () => {
       validationSchema={phoneSchema}
       onSubmit={handleSubmit}
     >
-      <Form autoComplete="off">
+      <StyledForm autoComplete="off">
         <Wrapper>
           <Input
             key={nanoid()}
@@ -89,7 +89,7 @@ export const LoginForm = () => {
         <Wrapper>
           <Button type="submit">Add contact</Button>
         </Wrapper>
-      </Form>
+      </StyledForm>
     </Formik>
   );
 };

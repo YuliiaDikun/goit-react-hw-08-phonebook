@@ -9,9 +9,9 @@ export const StyledLink = styled(NavLink)`
     content: '';
     width: 100%;
     position: absolute;
-    top: 0;
+    bottom: 15px;
     left: 0;
     height: 1px;
-    color: white;
+    background-color: white;
   }
 `;

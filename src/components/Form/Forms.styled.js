@@ -1,4 +1,4 @@
-import { Field } from 'formik';
+import { Field, Form } from 'formik';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -7,7 +7,13 @@ export const Wrapper = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing(10)};
   background-color: ${({ theme }) => theme.colors.dark};
 `;
-
+export const StyledForm = styled(Form)`
+  width: 280px;
+  margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+`;
 export const Label = styled.label`
   position: absolute;
   top: 0;
@@ -26,6 +32,7 @@ export const Input = styled(Field)`
   width: 100%;
   padding: ${({ theme }) => theme.spacing(4)};
   border: 1px solid white;
+  border-radius: 4px;
   font-size: ${({ theme }) => theme.spacing(5)};
   background-color: transparent;
   color: white;
@@ -53,6 +60,7 @@ export const Button = styled.button`
   padding: 1em 2em;
   color: ${({ theme }) => theme.colors.white};
   transition: 0.25s;
+  border-radius: 4px;
   cursor: pointer;
   &:hover,
   &:focus {
