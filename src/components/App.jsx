@@ -25,7 +25,9 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <b style={{
+        textAling: 'center'
+      }}>Refreshing user...</b>
   ) : (
     <ThemeProvider theme={theme}>
       <Container>

@@ -20,7 +20,9 @@ export default function Contacts() {
         <title>Your contacts</title>
       </Helmet>
       <LoginForm />
-      <div>{isLoading && 'Request in progress...'}</div>
+      <div style={{
+        textAling: 'center'
+      }}>{isLoading && 'Request in progress...'}</div>
       <ContactsList />
     </>
   );
