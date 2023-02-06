@@ -10,7 +10,16 @@ export const StyledLink = styled(NavLink)`
   color: white;
   font-weight: 700;
   padding: 16px;
-  &.active {
-    color: #03e9f4;
+  position: relative;
+  &.active::after {
+    color: white;
+    content: '';
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: white;
   }
 `;

@@ -4,7 +4,14 @@ export const StyledLink = styled(NavLink)`
   color: white;
   font-weight: 700;
   padding: 16px;
-  &.active {
-    color: #03e9f4;
+  position: relative;
+  &.active::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    color: white;
   }
 `;
