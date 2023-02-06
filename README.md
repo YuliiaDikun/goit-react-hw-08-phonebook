@@ -1,6 +1,6 @@
-# React Contact book
+# REACT CONTACT BOOK
 
-This is a personal Contact book app. Developed using React, Redux, React-Route
+This is a personal Contact book app. Developed using React, Redux, React Routes
 and Heroku as a backend.
 
 ---
